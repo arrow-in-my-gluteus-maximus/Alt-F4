@@ -3,10 +3,12 @@
   max-width: 100%;
   padding-left: 16px;
   padding-right: 16px;
+  padding-bottom: 20px;
   margin: auto auto 0;
 }
 
 .footer-inner {
+  position: relative;
   margin-top: 0;
   display: flex;
   margin-bottom: 16px;
@@ -16,23 +18,36 @@
 .footer-links {
   text-align: center;
   width: 50%;
+  min-width: 202px;
+  height: 52px;
   margin-right: 16px;
-  margin-bottom: 0 !important;
   font-size: 85%;
 }
 
 .footer-rocket {
   text-align: center;
-  background: url(/assets/GLOBAL/img/footer-bg.jpg);
   background-position: center center;
   background-size: 192px;
   width: 240px;
+  min-width: 150px;
+  height: 52px;
   position: relative;
   overflow: visible !important;
 }
 
+.footer-rocket { 
+  background-image: url("/assets/GLOBAL/img/footer-bg.jpg");
+}
+
+.footer-rocket .spidertron-center {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  z-index: 50;
+  transition: height 1s linear;
+}
+
 .footer-rocket .rocket {
-  background: url(/assets/GLOBAL/img/spider-idle.gif);
   background-size: 130px;
   width: 130px;
   margin-left: -65px;
@@ -44,19 +59,54 @@
   transition: height 1s linear;
 }
 
+.webp .footer-rocket .rocket {
+  background-image: url("/assets/GLOBAL/img/spider-idle.webp");
+}
+
+.no-webp .footer-rocket .rocket { 
+  background-image: url("/assets/GLOBAL/img/spider-idle.gif");
+}
+
 .footer-copyright {
   text-align: center;
   width: 50%;
+  min-width: 270px;
+  height: 52px;
   margin-left: 16px;
   font-size: 92.5%;
 }
 
 @media (max-width: 750px) {
-  .footer-rocket {
-    display: none;
+  .footer-inner .footer-links {
+    margin-top: 64px;
   }
-  .footer-links {
-    margin-right: 0;
+  .footer-inner .footer-rocket {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    right: 12px;
+    width: auto;
+  }
+  .footer-inner .footer-copyright {
+    margin-left: 0;
+    margin-top: 64px;
+  }
+}
+
+@media (max-width: 543px) {
+  .footer .footer-inner {
+    display: block;
+  }
+
+  .footer-inner .footer-links {
+    width: 100%;
+  }
+  .footer-inner .footer-copyright {
+    margin-left: 0;
+    margin-top: 10px;
+    height: auto;
+    width: 100%;
+    min-width: 0;
   }
 }
 

@@ -1,0 +1,78 @@
+img,
+iframe,
+video {
+  max-width: 100%;
+}
+.yt {
+  position: relative;
+  display: block;
+  width: 100%; /* width of iframe wrapper */
+  height: 0;
+  margin: 20px auto;
+  padding: 0% 0% 56.25%; /* 16:9 ratio */
+  overflow: hidden;
+}
+
+.yt iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+  margin: 0;
+}
+
+.twitch {
+  margin: 0px auto !important;
+}
+
+article img,
+article video,
+article iframe {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  // box-shadow: 0 -2px 3px -1px #000, -2px 0 4px -2px #28221f, 2px 0 4px -2px #28221f, 0 4px 3px -2px #646261;
+  // border-bottom: 1px solid #222;
+}
+
+iframe.iframe-inset {
+  max-width: 100%;
+  box-shadow: 0 -2px 3px -1px #000, -2px 0 4px -2px #28221f, 2px 0 4px -2px #28221f, 0 4px 3px -2px #646261;
+  border-bottom: 1px solid #222;
+  background-size: cover;
+  background-position: center center;
+}
+
+.flex-space-evenly {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.m8,
+div.m8 {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+div.p8 {
+  padding: 8px;
+}
+
+.gallery {
+  width: 100%;
+  display: grid;
+  grid-gap: 3px;
+  grid-row-gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-rows: 1fr, 1fr;
+  grid-auto-flow: dense;
+  justify-content: center;
+  img#main {
+    grid-row: 1;
+    grid-column: 1/-1;
+    width: 100%;
+  }
+}

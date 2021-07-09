@@ -1,22 +1,41 @@
 ---
-layout: default
+layout: page
 ---
-<article class="panel blog-post">
-	<h2>{{ page.title }}</h2>
-	{% if page.author or page.editor or page.date %}
-	<div class="panel-inset mb0">
-		{% include author.html %}
-	</div>
-	{% endif %}
-	<div class="panel-inset-lighter mt0">
-		{{ content }}
-		{% include discuss.html %}
-	</div>
-	<div class="panel-inset mb0 p4 flex flex-space-between">
-		<div>
-			<a class="button square-sm" href="/">
-				<i class="fas fa-angle-double-left"></i>
-			</a>
-		</div>
-	</div>
-</article>
+<div class="post-header">
+  <div class="panel" >
+    <div class="outer">
+      <img class="inner" src="{{ page.image.url }}" alt="{{ post.image.transcription }}" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>{{ site.data.locale.table-of-contents }}</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      {% include toc.html html=content sanitize=true %}
+    </div>
+  </details>
+</div>
+
+{% if site.active_lang != page.lang %}
+<div class="center banner">
+  {{ site.data.locale.not-translated | markdownify }}
+</div>
+{% endif %}
+
+
+{% include anchor_headings.html html=content anchorClass='anchor' anchorAttrs='style="text-decoration: none;"' location="inplace" anchorBody='#' %}
+
+{% assign juxtapose = content | match_regex: 'class="juxtapose juxtapose-.*?"' %}
+{% if juxtapose %}
+<script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+<link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+{% endif %}
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>

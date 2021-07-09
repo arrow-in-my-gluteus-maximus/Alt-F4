@@ -1,0 +1,44 @@
+---
+layout: default
+---
+<article class="panel blog-post">
+	{% if page.title %}
+	<h1 class="page-title-headder">{{ page.title }}&nbsp;&nbsp;<author>{{ page.date | default: post.date | date: site.data.locale.date-format }}</author></h1>
+	{% endif %}
+	{% if page.author or page.editor or page.date %}
+	<div class="panel-inset mb0">
+		{% include author.html %}
+	</div>
+	{% endif %}
+	<div class="panel-inset-lighter mt0">
+		{{ content }}
+		{% include discuss.html %}
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		{% if page.previous.url %}
+		<a href="{{page.previous.url}}" class="button square-sm"><i
+				class="fas fa-angle-double-left"></i></a>
+		{% else %}
+		<a class="button square-sm disabled ">
+			<i class="fas fa-angle-double-left"></i>
+		</a>
+		{% endif %}
+		<a class="button square-sm" href="/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		{% if page.next.url %}
+		<a href="{{page.next.url}}" class="button square-sm">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		{% else %}
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		{% endif %}
+		</div>
+	</div>
+</article>
